@@ -1,14 +1,14 @@
 import { ethers } from "hardhat";
 
 async function main() {
-  ethers.getSigner()
-  const Lock = await ethers.getContractFactory("Lock");
-  const lock = await Lock.deploy(, { value: 0 });
+  const Relay = await ethers.getContractFactory("Relay");
+  const manager = await Relay.signer.getAddress();
+  const relay = await Relay.deploy(manager);
 
-  await lock.deployed();
+  await relay.deployed();
 
-  console.log(`Lock with 0.00000001 ETH and unlock timestamp ${unlockTime} deployed to ${lock.address}`);
-  console.log(`Block explorer URL: https://blockscout.scroll.io/address/${lock.address}`);
+  console.log(`Relay deployed to ${relay.address}`);
+  console.log(`Block explorer URL: https://blockscout.scroll.io/address/${relay.address}`);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
