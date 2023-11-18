@@ -1,6 +1,6 @@
 export default function Navbar() {
 
-    return (<div className="navbar bg-base-100">
+    return (<div className="flex flex-row w-screen"><div className="navbar bg-base-200 m-2 rounded-md shadow-sm">
         {/* <div className="navbar-start">
             <div className="dropdown">
                 <label tabIndex={0} className="btn btn-ghost btn-circle">
@@ -20,6 +20,7 @@ export default function Navbar() {
 
             <w3m-button></w3m-button>
         </div>
+    </div>
     </div>)
 
 }

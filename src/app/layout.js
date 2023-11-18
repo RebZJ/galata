@@ -13,11 +13,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
+      <body data-theme="light">
         <Web3Modal>
           <Navbar></Navbar>
           {children}
-
         </Web3Modal>
       </body>
     </html>
