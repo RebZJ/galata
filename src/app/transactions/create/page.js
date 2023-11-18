@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useContractWrite } from 'wagmi'
 import relay from '../../../../artifacts/contracts/Relay.sol/Relay.json';
 import { parseEther } from 'viem';
-
+import { useAccount, useNetwork } from 'wagmi'
 
 
 export default function CreateTransaction() {
@@ -25,6 +25,11 @@ const ListToJSONConverter = () => {
     const [newId, setNewId] = useState('');
     const [fee, setFee] = useState()
     const [client, setClient] = useState()
+    const [addy, setAddy] = useState(null)
+    const { address, isConnecting, isDisconnected } = useAccount()
+    useEffect(() => {
+        setAddy(address)
+    }, [address])
 
     const { data, isLoading, isSuccess, write } = useContractWrite({
         address: '0xBBd9a9C472F86eCAD897E2117B6047E8E8fCbA5F',
@@ -41,8 +46,8 @@ const ListToJSONConverter = () => {
         if (newAmount.trim() !== '' && newId.trim() !== '') {
             const newItem = {
 
-                amount: newAmount,
-                id: newId,
+                destination: newId,
+                value: parseEther(newAmount),
             };
 
             setList([...list, newItem]);
@@ -53,19 +58,21 @@ const ListToJSONConverter = () => {
     };
 
     function sendTransactionToChain() {
+        console.log(addy)
         write({
-            args: [client, list, fee]
+            args: [client, list, parseEther(fee)],
+            from: addy
         })
     }
 
     useEffect(() => {
-        const payload = JSON.stringify({ transactions: list, fee: fee, client: client });
-        setJsonPayload(payload);
+        // const payload = JSON.stringify({ transactions: list, fee: fee, client: client });
+        // setJsonPayload(payload);
     }, [list, fee, client])
 
     return (
         <div className="flex flex-col items-center prose space-y-2 bg-base-200 w-min p-4 rounded-lg shadow-md " >
-
+            <div>{addy}</div>
             <div className="flex flex-row space-x-4 ">
                 <input
                     className=' input'
