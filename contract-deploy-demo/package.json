@@ -8,6 +8,7 @@
     "test": "npx hardhat test",
     "clean": "npx hardhat clean",
     "ismanager": "npx hardhat run --network scrollTestnet scripts/read.ts",
+    "manager": "npx hardhat run --network scrollTestnet scripts/manager.ts",
     "tx:generate": "npx hardhat run --network scrollTestnet scripts/generateTransaction.ts",
     "tx:execute": "npx hardhat run --network scrollTestnet scripts/executeTransaction.ts",
     "tx:approve-business": "npx hardhat run --network scrollTestnet scripts/addBusiness.ts",
