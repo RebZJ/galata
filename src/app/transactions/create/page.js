@@ -32,7 +32,7 @@ const ListToJSONConverter = () => {
     }, [address])
 
     const { data, isLoading, isSuccess, write } = useContractWrite({
-        address: '0xBBd9a9C472F86eCAD897E2117B6047E8E8fCbA5F',
+        address: '0x525D2de2b1679aFc68bB5e724db04bDCdAf7D94d',
         abi: relay.abi,
         functionName: 'generateTransaction',
     })
