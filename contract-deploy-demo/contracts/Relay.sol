@@ -3,7 +3,7 @@ pragma solidity ^0.8.9;
 
 import "./Types.sol";
 
-contract Lock is Types {
+contract Relay is Types {
     /// @dev Current set of business clients
     mapping(address => bool) public isBusiness;
 
@@ -123,7 +123,7 @@ contract Lock is Types {
 
         require(totalPayment + transaction.fee <= msg.value, "The value is not enough to cover the transaction");
 
-        for (uint256 i = 0; i < transaction.pieces.length; i++) {
+        for (uint256 i = 0; i < transaction.piecesCount; i++) {
             _sendFundsTo(transaction.pieces[i].destination, transaction.pieces[i].value);
         }
 
