@@ -4,16 +4,15 @@ import "./globals.css";
 import { Web3Modal } from "../context/Web3Modal"
 import Navbar from "@/components/Navbar";
 
-
 export const metadata = {
-  title: "Web3Modal",
-  description: "Web3Modal Example",
+  title: "Galata",
+  description: "Verifiable transaction manager",
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body data-theme="light">
+    <html lang="en" data-theme="retro">
+      <body >
         <Web3Modal>
           <Navbar></Navbar>
           {children}

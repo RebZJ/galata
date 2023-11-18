@@ -1,16 +1,11 @@
-
-
 "use client";
-
 import { createWeb3Modal, defaultWagmiConfig } from '@web3modal/wagmi/react'
 
 import { WagmiConfig } from 'wagmi'
 import { arbitrum, mainnet, scrollSepolia, gnosis } from 'viem/chains'
 
-// 1. Get projectId
 const projectId = 'af9bf413505dd80e1c7bca20415b51b9'
 
-// 2. Create wagmiConfig
 const metadata = {
     name: 'Web3Modal',
     description: 'Web3Modal Example',

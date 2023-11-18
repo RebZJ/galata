@@ -1,3 +1,4 @@
+"use client"
 export default function Navbar() {
 
     return (<div className="flex flex-row w-screen"><div className="navbar bg-base-200 m-2 rounded-md shadow-sm">

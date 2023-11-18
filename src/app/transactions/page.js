@@ -15,8 +15,5 @@ export default function Transaction() {
         </button>
 
         <div> Pending transactions</div>
-
-
-
     </div>)
 }
