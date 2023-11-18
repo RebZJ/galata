@@ -37,32 +37,32 @@ Relay contracts (all verified):
 * [gnosis](https://gnosis-chiado.blockscout.com/address/0xBBd9a9C472F86eCAD897E2117B6047E8E8fCbA5F): `0xBBd9a9C472F86eCAD897E2117B6047E8E8fCbA5F`
     * deployed and verified
     * more than 2 txs
-    * [tweet link]()
-    * [frontend link]()
+    * [tweet link](https://x.com/gostkin1/status/1725997136293069291)
+    * [frontend link](https://galata-indol.vercel.app/)
 
 ## Frontend deployment
-Please check the [link]()
+Please check the [link](https://galata-indol.vercel.app/)
 
 ## Progress:
 * [ ] Scrolls
     * [x] contract deployment
     * [x] contract verification
-    * [ ] fronted test
+    * [ ] frontend test
 * [ ] Arbitrum Goerli
     * [x] contract deployment
     * [x] contract verification
-    * [ ] fronted test
+    * [ ] frontend test
 * [ ] Arbitrum Stylus
     * [x] contract deployment
     * [x] contract verification
-    * [ ] fronted test
+    * [ ] frontend test
 * [ ] Chiliz
     * [x] contract deployment
     * [x] contract verification
-    * [ ] fronted test
+    * [ ] frontend test
 * [ ] Gnosis
     * [x] contract deployment
     * [x] contract verification
-    * [ ] fronted test
-    * [ ] tweet link
-    * [ ] frontend link
+    * [ ] frontend test
+    * [x] tweet link
+    * [x] frontend link
