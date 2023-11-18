@@ -28,6 +28,18 @@ const config: HardhatUserConfig = {
       accounts:
           process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
     },
+    chilizTestnet: {
+      url: 'https://chiliz-spicy.publicnode.com/',
+      chainId: 88882,
+      accounts:
+          process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+    },
+    gnosisTestnet: {
+      url: 'https://gnosis-chiado.publicnode.com',
+      chainId: 10200,
+      accounts:
+          process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+    },
   },
   etherscan: {
     apiKey: {

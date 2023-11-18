@@ -16,7 +16,9 @@
     "tx:approve-charity": "npx hardhat run --network scrollTestnet scripts/addCharity.ts",
     "deploy:hh": "npx hardhat run --network hardhat scripts/deploy.ts",
     "deploy:scrollTestnet": "npx hardhat run --network scrollTestnet scripts/deploy.ts",
-    "deploy:arbitrumTestnet": "npx hardhat run --network arbitrumGoerli scripts/deploy.ts"
+    "deploy:arbitrumTestnet": "npx hardhat run --network arbitrumGoerli scripts/deploy.ts",
+    "deploy:chilizTestnet": "npx hardhat run --network chilizTestnet scripts/deploy.ts",
+    "deploy:gnosisTestnet": "npx hardhat run --network gnosisTestnet scripts/deploy.ts"
   },
   "devDependencies": {
     "@ethersproject/abi": "^5.4.7",

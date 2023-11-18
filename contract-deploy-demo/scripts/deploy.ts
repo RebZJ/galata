@@ -3,7 +3,7 @@ import { ethers } from "hardhat";
 async function main() {
   const Relay = await ethers.getContractFactory("Relay");
   const manager = await Relay.signer.getAddress();
-  const relay = await Relay.deploy(manager);
+  const relay = await Relay.deploy(manager, {maxPriorityFeePerGas: 7});
 
   await relay.deployed();
 
