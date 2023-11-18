@@ -17,36 +17,7 @@ This project demonstrates how to use hardhat or foundry to deploy a contract in 
 5. Run `yarn deploy:scrollTestnet` to deploy the contract on the Scroll Sepolia Testnet.
 6. Run `yarn test` for hardhat tests.
 
-## Deploy with Foundry
-
-1. Install Foundry.
-   ```shell
-   curl -L https://foundry.paradigm.xyz | bash
-   foundryup
-   ```
-2. Build the project.
-   ```
-   forge build
-   ```
-3. Deploy the contract.
-   ```
-   forge create --rpc-url https://sepolia-rpc.scroll.io/ \
-     --value <lock_amount> \
-     --constructor-args <unlock_time> \
-     --private-key <your_private_key> \
-     --legacy \
-     contracts/Lock.sol:Lock
-   ```
-
-- `<lock_amount>` is the amount of `ETH` to be locked in the contract. Try setting this to some small amount, like `0.0000001ether`.
-- `<unlock_time>` is the Unix timestamp after which the funds locked in the contract will become available for withdrawal. Try setting this to some Unix timestamp in the future, like `1696118400` (this Unix timestamp corresponds to October 1, 2023).
-
-For example:
-
-```
-forge create --rpc-url https://sepolia-rpc.scroll.io/ --value 0.00000000002ether --constructor-args 1696118400 --private-key 0xabc123abc123abc123abc123abc123abc123abc123abc123abc123abc123abc1 --legacy contracts/Lock.sol:Lock
-```
-
-## Support
-
-Join our Discord: https://scroll.io/
+## Current deployments
+Relay contracts
+* [scrolls](https://sepolia.scrollscan.dev/address/0xbbd9a9c472f86ecad897e2117b6047e8e8fcba5f): `0xBBd9a9C472F86eCAD897E2117B6047E8E8fCbA5F`
+* [arbitrum](https://testnet.arbiscan.io/address/0xc1dacf75a4ec7fe6273d21628bf0206918dc768f): `0xc1dacf75a4ec7fe6273d21628bf0206918dc768f`
