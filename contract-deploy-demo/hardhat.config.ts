@@ -28,6 +28,12 @@ const config: HardhatUserConfig = {
       accounts:
           process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
     },
+    arbitrumSepolia: {
+      url: 'https://stylus-testnet.arbitrum.io/rpc',
+      chainId: 23011913,
+      accounts:
+          process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+    },
     chilizTestnet: {
       url: 'https://chiliz-spicy.publicnode.com/',
       chainId: 88882,
