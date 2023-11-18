@@ -8,7 +8,7 @@ contract Relay is Types {
     mapping(address => bool) public isBusiness;
 
     /// @dev Not yet added business clients
-    mapping(address => bool) public pendingBusinesses;
+    address[] public pendingBusinesses;
 
     /// @dev Current set of managers
     mapping(address => bool) public isManager;
@@ -19,11 +19,12 @@ contract Relay is Types {
     /// @dev Current set of charity clients
     mapping(address => bool) public isCharity;
     /// @dev Not yet added charity clients
-    mapping(address => bool) public pendingCharities;
+    address[] public pendingCharities;
 
     uint256 public transactionsCount;
 
     mapping(uint256 => Transaction) public transactions;
+    mapping(address => uint256[]) public clientToTransaction;
 
     event ManagerAdded(
         address indexed addedManager
@@ -54,12 +55,35 @@ contract Relay is Types {
 
     /// businesses management
     function addNewBusiness(address business) public {
-        pendingBusinesses[business] = true;
+        for (uint256 i = 0; i < pendingBusinesses.length; i++) {
+            if (pendingBusinesses[i] == business) {
+                revert("The business address is already pending");
+            }
+        }
+
+        pendingBusinesses.push(business);
     }
 
     function approveBusiness(address business) public onlyManager {
-        pendingBusinesses[business] = false;
+        if (isBusiness[business]) {
+            return;
+        }
+
         isBusiness[business] = true;
+
+        if (pendingBusinesses.length == 0) {
+            return;
+        }
+
+        for (uint256 i = 0; i < pendingBusinesses.length; i++) {
+            if (pendingBusinesses[i] == business) {
+                if (i != pendingBusinesses.length - 1) {
+                    pendingBusinesses[i] = pendingBusinesses[pendingBusinesses.length - 1];
+                }
+                delete pendingBusinesses[pendingBusinesses.length - 1];
+                break;
+            }
+        }
     }
 
     function removeBusiness(address business) public onlyManager {
@@ -68,12 +92,35 @@ contract Relay is Types {
 
     /// charities management
     function addNewCharity(address charity) public {
-        pendingCharities[charity] = true;
+        for (uint256 i = 0; i < pendingCharities.length; i++) {
+            if (pendingCharities[i] == charity) {
+                revert("The charity address is already pending");
+            }
+        }
+
+        pendingCharities.push(charity);
     }
 
     function approveCharity(address charity) public onlyManager {
-        pendingCharities[charity] = false;
+        if (isCharity[charity]) {
+            return;
+        }
+
         isCharity[charity] = true;
+
+        if (pendingCharities.length == 0) {
+            return;
+        }
+
+        for (uint256 i = 0; i < pendingCharities.length; i++) {
+            if (pendingCharities[i] == charity) {
+                if (i != pendingCharities.length - 1) {
+                    pendingCharities[i] = pendingCharities[pendingCharities.length - 1];
+                }
+                delete pendingCharities[pendingCharities.length - 1];
+                break;
+            }
+        }
     }
 
     function removeCharity(address charity) public onlyManager {
@@ -83,6 +130,17 @@ contract Relay is Types {
     /// manager management
     function addManager(address manager) public onlyManager {
         isManager[manager] = true;
+    }
+
+    function pendingTransactions(
+        address client
+    ) public view returns (Transaction[] memory) {
+        uint256 clientTransactions = clientToTransaction[client].length;
+        Transaction[] memory returnTransactions = new Transaction[](clientTransactions);
+        for (uint256 i = 0; i < clientTransactions; i++) {
+            returnTransactions[i] = transactions[clientToTransaction[client][i]];
+        }
+        return returnTransactions;
     }
 
     function generateTransaction(
@@ -101,8 +159,10 @@ contract Relay is Types {
         for (uint256 i = 0; i < pieces.length; i++) {
             require(isCharity[pieces[i].destination], "One of the destinations is not an approved charity");
             require(pieces[i].value > 0, "Donations should be non-zero");
-            transactions[transactionsCount].pieces[i] = pieces[i];
+            transactions[transactionsCount].pieces.push(pieces[i]);
         }
+
+        clientToTransaction[client].push(transactionsCount);
 
         emit TransactionAdded(transactionsCount, client);
         transactionsCount++;

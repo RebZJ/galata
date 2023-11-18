@@ -14,7 +14,7 @@ abstract contract Types {
     /// @dev Charity transaction proposal. For Clients to sign and execute
     struct Transaction {
         address client;
-        mapping(uint256 => TransactionPiece) pieces;
+        TransactionPiece[] pieces;
         uint256 piecesCount;
         uint256 fee;
         bool paid;

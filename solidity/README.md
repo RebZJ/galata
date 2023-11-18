@@ -28,11 +28,20 @@ Relay contracts (all verified):
 * [chiliz](https://spicy-explorer.chiliz.com/address/0xBBd9a9C472F86eCAD897E2117B6047E8E8fCbA5F): `0xBBd9a9C472F86eCAD897E2117B6047E8E8fCbA5F`
   * deployed and verified, so should be eligible for Chiliz prize pool
 * [gnosis](https://gnosis-chiado.blockscout.com/address/0xBBd9a9C472F86eCAD897E2117B6047E8E8fCbA5F): `0xBBd9a9C472F86eCAD897E2117B6047E8E8fCbA5F`
-  * deployed and verified
-  * more than 2 txs
-  * [tweet link]()
-  * [frontend link]()
+  * deployed and verified (testnet)
+  * address is in the readme
+  * more than 2 successful txs
+  * [tweet link](https://x.com/gostkin1/status/1725997136293069291)
+  * [frontend link](https://galata-indol.vercel.app/)
+  * A living, breathing product - everything works
 
+We use WalletConnect to interact with the wallets
+
+We qualify for UNICEF innovation:
+* We're using fully open source technologies
+* We help business (for-profit) companies connect with charity companies via our Relay. The Relay provides an ability to donate to charity (e.g. to companies that help reduce carbon dioxide emissions or to companies that plant trees). The donation is traceable, so e.g. if businesses would need to report this to tax authorities they can show where the funds went and provide the proof that the receiving companies help with sustainability.
+* The idea is unique and solves real case (e.g. in Australia this can be done in web2)
+* 
 ## Progress:
 * [ ] Scrolls
   * [x] contract deployment
@@ -54,5 +63,5 @@ Relay contracts (all verified):
   * [x] contract deployment
   * [x] contract verification
   * [ ] fronted test
-  * [ ] tweet link
-  * [ ] frontend link
+  * [x] tweet link
+  * [x] frontend link
