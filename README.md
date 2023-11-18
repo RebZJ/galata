@@ -1,6 +1,10 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This repo contains frontend and contracts for Galata Charity Relay project
 
-## Getting Started
+## Contracts setup
+
+Please follow the instructions in [Contracts README](./solidity/README.md)
+
+## Frontend setup
 
 First, run the development server:
 
@@ -20,17 +24,45 @@ You can start editing the page by modifying `app/page.js`. The page auto-updates
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+## Current contract deployments
+Relay contracts (all verified):
+* [scrolls](https://sepolia.scrollscan.dev/address/0xbbd9a9c472f86ecad897e2117b6047e8e8fcba5f): `0xBBd9a9C472F86eCAD897E2117B6047E8E8fCbA5F`
+    * deployed and verified, so should be eligible for Scrolls prize pool
+* Arbitrum:
+    * [arbitrum-goerli](https://testnet.arbiscan.io/address/0xc1dacf75a4ec7fe6273d21628bf0206918dc768f): `0xc1dacf75a4ec7fe6273d21628bf0206918dc768f`
+    * [arbitrum-stylus](https://stylus-testnet-explorer.arbitrum.io/address/0xBBd9a9C472F86eCAD897E2117B6047E8E8fCbA5F): `0xbbd9a9c472f86ecad897e2117b6047e8e8fcba5f`
+    * deployed and verified on goerli and stylus, so should be eligible for Arbitrum prize pool
+* [chiliz](https://spicy-explorer.chiliz.com/address/0xBBd9a9C472F86eCAD897E2117B6047E8E8fCbA5F): `0xBBd9a9C472F86eCAD897E2117B6047E8E8fCbA5F`
+    * deployed and verified, so should be eligible for Chiliz prize pool
+* [gnosis](https://gnosis-chiado.blockscout.com/address/0xBBd9a9C472F86eCAD897E2117B6047E8E8fCbA5F): `0xBBd9a9C472F86eCAD897E2117B6047E8E8fCbA5F`
+    * deployed and verified
+    * more than 2 txs
+    * [tweet link]()
+    * [frontend link]()
 
-To learn more about Next.js, take a look at the following resources:
+## Frontend deployment
+Please check the [link]()
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Progress:
+* [ ] Scrolls
+    * [x] contract deployment
+    * [x] contract verification
+    * [ ] fronted test
+* [ ] Arbitrum Goerli
+    * [x] contract deployment
+    * [x] contract verification
+    * [ ] fronted test
+* [ ] Arbitrum Stylus
+    * [x] contract deployment
+    * [x] contract verification
+    * [ ] fronted test
+* [ ] Chiliz
+    * [x] contract deployment
+    * [x] contract verification
+    * [ ] fronted test
+* [ ] Gnosis
+    * [x] contract deployment
+    * [x] contract verification
+    * [ ] fronted test
+    * [ ] tweet link
+    * [ ] frontend link
