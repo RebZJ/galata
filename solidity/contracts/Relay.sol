@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: UNLICENSED
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.9;
 
 import "./Types.sol";
@@ -25,9 +25,13 @@ contract Relay is Types {
 
     mapping(uint256 => Transaction) public transactions;
 
-    event ManagerAdded(address indexed addedManager);
+    event ManagerAdded(
+        address indexed addedManager
+    );
 
-    event ManagerRemoved(address indexed addedManager);
+    event ManagerRemoved(
+        address indexed addedManager
+    );
 
     event TransactionAdded(
         uint256 indexed transactionId,
@@ -39,7 +43,10 @@ contract Relay is Types {
         address indexed business
     );
 
-    event Withdrawal(uint256 amount, address indexed manager);
+    event Withdrawal(
+        uint256 amount,
+        address indexed manager
+    );
 
     constructor(address manager) {
         isManager[manager] = true;
@@ -92,10 +99,7 @@ contract Relay is Types {
         transactions[transactionsCount].paid = false;
 
         for (uint256 i = 0; i < pieces.length; i++) {
-            require(
-                isCharity[pieces[i].destination],
-                "One of the destinations is not an approved charity"
-            );
+            require(isCharity[pieces[i].destination], "One of the destinations is not an approved charity");
             require(pieces[i].value > 0, "Donations should be non-zero");
             transactions[transactionsCount].pieces[i] = pieces[i];
         }
@@ -109,10 +113,7 @@ contract Relay is Types {
     ) public payable onlyBusiness transactionExists(transactionId) {
         Transaction storage transaction = transactions[transactionId];
 
-        require(
-            transaction.client == msg.sender,
-            "The transaction is for another client"
-        );
+        require(transaction.client == msg.sender, "The transaction is for another client");
         require(!transaction.paid, "Transaction is paid already");
 
         uint256 totalPayment = 0;
@@ -120,16 +121,10 @@ contract Relay is Types {
             totalPayment += transaction.pieces[i].value;
         }
 
-        require(
-            totalPayment + transaction.fee <= msg.value,
-            "The value is not enough to cover the transaction"
-        );
+        require(totalPayment + transaction.fee <= msg.value, "The value is not enough to cover the transaction");
 
         for (uint256 i = 0; i < transaction.piecesCount; i++) {
-            _sendFundsTo(
-                transaction.pieces[i].destination,
-                transaction.pieces[i].value
-            );
+            _sendFundsTo(transaction.pieces[i].destination, transaction.pieces[i].value);
         }
 
         transaction.paid = true;
@@ -161,14 +156,12 @@ contract Relay is Types {
     }
 
     modifier onlyManager() {
-        if (!isManager[msg.sender])
-            revert("Sender is not the approved manager");
+        if (!isManager[msg.sender]) revert("Sender is not the approved manager");
         _;
     }
 
     modifier onlyBusiness() {
-        if (!isBusiness[msg.sender])
-            revert("Sender is not the approved business");
+        if (!isBusiness[msg.sender]) revert("Sender is not the approved business");
         _;
     }
 

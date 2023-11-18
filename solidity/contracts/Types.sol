@@ -1,9 +1,10 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.9;
+pragma solidity ^0.8.7;
 
 /// @title Types
 /// @dev Source file that keeps type definitions
 abstract contract Types {
+
     /// @dev Charity transaction proposal. For Clients to sign and execute
     struct TransactionPiece {
         address destination;
