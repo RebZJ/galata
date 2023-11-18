@@ -7,21 +7,15 @@ const AppContext = createContext();
 
 // Create a Context Provider Component
 export const AppProvider = ({ children }) => {
-    const [userId, setUserId] = useState(null);
 
-    const login = (newUserId) => {
-        setUserId(newUserId);
-    };
+    const [userType, setUserType] = useState(null);
 
-    const logout = () => {
-        setUserId(null);
-    };
 
     // Provide the value to the components
     const contextValue = {
-        userId,
-        login,
-        logout,
+        userType,
+        setUserType
+
     };
 
     return (
@@ -32,10 +26,10 @@ export const AppProvider = ({ children }) => {
 };
 
 // Custom hook to consume the context
-export const useApp = () => {
+export const useAppContext = () => {
     const context = useContext(AppContext);
     if (!context) {
-        throw new Error('useApp must be used within a AppProvider');
+        throw new Error('useAppContext must be used within a AppProvider');
     }
     return context;
 };
