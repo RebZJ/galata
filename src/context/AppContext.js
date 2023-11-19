@@ -8,13 +8,12 @@ const AppContext = createContext();
 // Create a Context Provider Component
 export const AppProvider = ({ children }) => {
 
-    const [userType, setUserType] = useState(null);
-
+    const [globalContractAddress, setGlobalContractAddress] = useState(null);
 
     // Provide the value to the components
     const contextValue = {
-        userType,
-        setUserType
+        globalContractAddress,
+        setGlobalContractAddress
 
     };
 

@@ -5,8 +5,18 @@ import { useContractRead, useContractEvent } from 'wagmi'
 import Link from 'next/link';
 import relay from '../../artifacts/contracts/Relay.sol/Relay.json';
 import { useState, useEffect } from 'react'
+
+import { useContractStore } from '@/context/ZustandContext';
+
 export default function Home() {
 
+  const contractVal = useContractStore();
+  const { chain, chains } = useNetwork();
+  useEffect(() => {
+    console.log(chain.id);
+    contractVal.setContractAddress("ABC");
+    console.log(contractVal.contract);
+  }, [JSON.stringify(contractVal)]);
 
   const [addy, setAddy] = useState(null)
   const { address, isConnecting, isDisconnected } = useAccount()
@@ -17,12 +27,13 @@ export default function Home() {
   const [managerBool, setManagerBool] = useState()
 
   useEffect(() => {
+
     setAddy(address)
   }, [address])
 
 
   const isManager = useContractRead({
-    address: '0xAE7315753f792799f54236694777823efc197E74',
+    address: contractVal.contract,
     abi: relay.abi,
     functionName: 'isManager',
     args: [address],

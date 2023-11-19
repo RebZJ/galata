@@ -44,6 +44,9 @@ dependencies:
   web3modal:
     specifier: ^1.9.12
     version: 1.9.12(@babel/core@7.23.3)(react-is@18.2.0)
+  zustand:
+    specifier: ^4.4.6
+    version: 4.4.6(react@18.0.0)
 
 devDependencies:
   autoprefixer:

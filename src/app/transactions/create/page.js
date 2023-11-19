@@ -65,6 +65,8 @@ const ListToJSONConverter = () => {
         })
     }
 
+
+
     useEffect(() => {
         // const payload = JSON.stringify({ transactions: list, fee: fee, client: client });
         // setJsonPayload(payload);
