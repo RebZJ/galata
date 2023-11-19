@@ -55,25 +55,25 @@ We qualify for UNICEF innovation:
 Please check the [link](https://galata-indol.vercel.app/)
 
 ## Progress:
-* [ ] Scrolls
+* [x] Scrolls
     * [x] contract deployment
     * [x] contract verification
-    * [ ] frontend test
-* [ ] Arbitrum Goerli
+    * [x] frontend test
+* [x] Arbitrum Goerli
     * [x] contract deployment
     * [x] contract verification
-    * [ ] frontend test
-* [ ] Arbitrum Stylus
+    * [x] frontend test
+* [x] Arbitrum Stylus
     * [x] contract deployment
     * [x] contract verification
-    * [ ] frontend test
-* [ ] Chiliz
+    * [x] frontend test
+* [x] Chiliz
     * [x] contract deployment
     * [x] contract verification
-    * [ ] frontend test
-* [ ] Gnosis
+    * [x] frontend test
+* [x] Gnosis
     * [x] contract deployment
     * [x] contract verification
-    * [ ] frontend test
+    * [x] frontend test
     * [x] tweet link
     * [x] frontend link
