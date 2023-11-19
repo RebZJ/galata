@@ -19,11 +19,14 @@ async function main() {
     const signerAddress = await signer.getAddress()
 
     // Executing the transaction on-chain and verifying actual values
-    const signerBalanceBefore = await ethers.provider.getBalance(signerAddress);
-    const contract = await ethers.getContractAt("Relay", CONTRACT_ADDRESS, signer);
-    const tx = await contract.executeTransaction(BigInt(0), { value: BigInt(31), maxPriorityFeePerGas: 7});
-    const txReceipt = await tx.wait(5);
-    console.log("tx: ", txReceipt.transactionHash);
+    {
+        const signerBalanceBefore = await ethers.provider.getBalance(signerAddress);
+        const contract = await ethers.getContractAt("Relay", CONTRACT_ADDRESS, signer);
+        const tx = await contract.removeBusiness("0xEfED8aD69f4469d3bCd7f0cBb72AC658a109bCa7");
+        const txReceipt = await tx.wait(2);
+        console.log("tx: ", txReceipt.transactionHash);
+    }
+
 }
 
 main().catch((error) => {

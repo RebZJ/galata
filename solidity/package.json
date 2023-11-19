@@ -13,7 +13,9 @@
     "tx:add-manager:scrolls": "npx hardhat run --network scrollTestnet scripts/addManager.ts",
     "tx:generate:scrolls": "npx hardhat run --network scrollTestnet scripts/generateTransaction.ts",
     "tx:execute:scrolls": "npx hardhat run --network scrollTestnet scripts/executeTransaction.ts",
+    "tx:pending:scrolls": "npx hardhat run --network scrollTestnet scripts/fetchTransactions.ts",
     "tx:approve-business:scrolls": "npx hardhat run --network scrollTestnet scripts/addBusiness.ts",
+    "tx:remove-business:scrolls": "npx hardhat run --network scrollTestnet scripts/removeBusiness.ts",
     "tx:approve-charity:scrolls": "npx hardhat run --network scrollTestnet scripts/addCharity.ts",
 
     "tx:add-manager:arbitrumGoerli": "npx hardhat run --network arbitrumGoerli scripts/addManager.ts",

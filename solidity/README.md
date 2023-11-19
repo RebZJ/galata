@@ -19,15 +19,15 @@ This project demonstrates how to use hardhat or foundry to deploy a contract in 
 
 ## Current deployments
 Relay contracts (all verified):
-* [scrolls](https://sepolia.scrollscan.dev/address/0xbbd9a9c472f86ecad897e2117b6047e8e8fcba5f): `0xBBd9a9C472F86eCAD897E2117B6047E8E8fCbA5F`
+* [scrolls](https://sepolia.scrollscan.dev/address/0x0644667f39cb9d87e884DF3C211a4363Cd4f5879): `0x0644667f39cb9d87e884DF3C211a4363Cd4f5879`
   * deployed and verified, so should be eligible for Scrolls prize pool
 * Arbitrum:
-  * [arbitrum-goerli](https://testnet.arbiscan.io/address/0xc1dacf75a4ec7fe6273d21628bf0206918dc768f): `0xc1dacf75a4ec7fe6273d21628bf0206918dc768f`
-  * [arbitrum-stylus](https://stylus-testnet-explorer.arbitrum.io/address/0xBBd9a9C472F86eCAD897E2117B6047E8E8fCbA5F): `0xbbd9a9c472f86ecad897e2117b6047e8e8fcba5f`
+  * [arbitrum-goerli](https://testnet.arbiscan.io/address/0x03839dC2Cd16dA7E41560762Dea9CB9Ad59DbF18): `0x03839dC2Cd16dA7E41560762Dea9CB9Ad59DbF18`
+  * [arbitrum-stylus](https://stylus-testnet-explorer.arbitrum.io/address/0x93a51058c0Cf6BA3e97a4A3E476ae8C95D02ea04): `0x93a51058c0Cf6BA3e97a4A3E476ae8C95D02ea04`
   * deployed and verified on goerli and stylus, so should be eligible for Arbitrum prize pool
-* [chiliz](https://spicy-explorer.chiliz.com/address/0xBBd9a9C472F86eCAD897E2117B6047E8E8fCbA5F): `0xBBd9a9C472F86eCAD897E2117B6047E8E8fCbA5F`
+* [chiliz](https://spicy-explorer.chiliz.com/address/0x93a51058c0Cf6BA3e97a4A3E476ae8C95D02ea04): `0x93a51058c0Cf6BA3e97a4A3E476ae8C95D02ea04`
   * deployed and verified, so should be eligible for Chiliz prize pool
-* [gnosis](https://gnosis-chiado.blockscout.com/address/0xBBd9a9C472F86eCAD897E2117B6047E8E8fCbA5F): `0xBBd9a9C472F86eCAD897E2117B6047E8E8fCbA5F`
+* [gnosis](https://gnosis-chiado.blockscout.com/address/0x93a51058c0Cf6BA3e97a4A3E476ae8C95D02ea04): `0x93a51058c0Cf6BA3e97a4A3E476ae8C95D02ea04`
   * deployed and verified (testnet)
   * address is in the readme
   * more than 2 successful txs
