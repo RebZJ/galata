@@ -5,6 +5,7 @@ import { useContractWrite } from 'wagmi'
 import relay from '../../../../artifacts/contracts/Relay.sol/Relay.json';
 import { parseEther } from 'viem';
 import { useAccount, useNetwork } from 'wagmi'
+import {useContractStore} from "@/context/ZustandContext";
 
 
 export default function CreateTransaction() {
@@ -31,8 +32,36 @@ const ListToJSONConverter = () => {
         setAddy(address)
     }, [address])
 
+    const contractVal = useContractStore();
+    const { chain, chains } = useNetwork();
+    useEffect(() => {
+        if (chain === undefined) {
+            contractVal.setContractAddress("0xAE7315753f792799f54236694777823efc197E74");
+        } else {
+        if (chain.id === 421613) {
+            // arb goerli
+            contractVal.setContractAddress("0xA4852b98666c8eE2CAb535bD9638C0c83ecdcFC2");
+        } else if (chain.id === 23011913) {
+            // arb sepolia
+            contractVal.setContractAddress("0x525D2de2b1679aFc68bB5e724db04bDCdAf7D94d");
+        } else if (chain.id === 88882) {
+            // chiliz
+            contractVal.setContractAddress("0xA845C2f516013A7687D4b8bE52393f6E3ef75F00");
+        } else if (chain.id === 10200) {
+            // gnosisTestnet
+            contractVal.setContractAddress("0xA845C2f516013A7687D4b8bE52393f6E3ef75F00");
+        } else if (chain.id === 314159) {
+            // filecoin
+            contractVal.setContractAddress("0xBBd9a9C472F86eCAD897E2117B6047E8E8fCbA5F");
+        } else {
+            // scrolls
+            contractVal.setContractAddress("0xAE7315753f792799f54236694777823efc197E74");
+        }}
+        console.log(contractVal.contract);
+    }, [JSON.stringify(contractVal)]);
+
     const { data, isLoading, isSuccess, write } = useContractWrite({
-        address: '0xAE7315753f792799f54236694777823efc197E74',
+        address: contractVal.contract,
         abi: relay.abi,
         functionName: 'generateTransaction',
     })
