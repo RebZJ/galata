@@ -6,18 +6,22 @@ import "./Types.sol";
 contract Relay is Types {
     /// @dev Current set of business clients
     mapping(address => bool) public isBusiness;
+    address[] public businesses;
 
     /// @dev Not yet added business clients
     address[] public pendingBusinesses;
 
     /// @dev Current set of managers
     mapping(address => bool) public isManager;
+    address[] public managers;
 
     /// @dev Rewards the relay received for operations
     uint256 public rewards;
 
     /// @dev Current set of charity clients
     mapping(address => bool) public isCharity;
+    address[] public charities;
+
     /// @dev Not yet added charity clients
     address[] public pendingCharities;
 
@@ -26,12 +30,32 @@ contract Relay is Types {
     mapping(uint256 => Transaction) public transactions;
     mapping(address => uint256[]) public clientToTransaction;
 
-    event ManagerAdded(
-        address indexed addedManager
+    event CharityApproved(
+        address indexed charity
     );
 
-    event ManagerRemoved(
-        address indexed addedManager
+    event PendingCharityAdded(
+        address indexed charity
+    );
+
+    event CharityRemoved(
+        address indexed charity
+    );
+
+    event BusinessApproved(
+        address indexed business
+    );
+
+    event PendingBusinessAdded(
+        address indexed charity
+    );
+
+    event BusinessRemoved(
+        address indexed business
+    );
+
+    event ManagerAdded(
+        address indexed manager
     );
 
     event TransactionAdded(
@@ -62,6 +86,7 @@ contract Relay is Types {
         }
 
         pendingBusinesses.push(business);
+        emit PendingBusinessAdded(business);
     }
 
     function approveBusiness(address business) public onlyManager {
@@ -70,6 +95,9 @@ contract Relay is Types {
         }
 
         isBusiness[business] = true;
+        businesses.push(business);
+
+        emit BusinessApproved(business);
 
         if (pendingBusinesses.length == 0) {
             return;
@@ -88,6 +116,22 @@ contract Relay is Types {
 
     function removeBusiness(address business) public onlyManager {
         isBusiness[business] = false;
+
+        emit BusinessRemoved(business);
+
+        if (businesses.length == 0) {
+            return;
+        }
+
+        for (uint256 i = 0; i < businesses.length; i++) {
+            if (businesses[i] == business) {
+                if (i != businesses.length - 1) {
+                    businesses[i] = businesses[businesses.length - 1];
+                }
+                delete businesses[businesses.length - 1];
+                break;
+            }
+        }
     }
 
     /// charities management
@@ -99,6 +143,7 @@ contract Relay is Types {
         }
 
         pendingCharities.push(charity);
+        emit PendingCharityAdded(charity);
     }
 
     function approveCharity(address charity) public onlyManager {
@@ -107,6 +152,9 @@ contract Relay is Types {
         }
 
         isCharity[charity] = true;
+        charities.push(charity);
+
+        emit CharityApproved(charity);
 
         if (pendingCharities.length == 0) {
             return;
@@ -125,22 +173,41 @@ contract Relay is Types {
 
     function removeCharity(address charity) public onlyManager {
         isCharity[charity] = false;
+        emit CharityRemoved(charity);
+
+        if (charities.length == 0) {
+            return;
+        }
+
+        for (uint256 i = 0; i < charities.length; i++) {
+            if (charities[i] == charity) {
+                if (i != charities.length - 1) {
+                    charities[i] = charities[charities.length - 1];
+                }
+                delete charities[charities.length - 1];
+                break;
+            }
+        }
     }
 
     /// manager management
     function addManager(address manager) public onlyManager {
         isManager[manager] = true;
+        managers.push(manager);
+        emit ManagerAdded(manager);
     }
 
     function pendingTransactions(
         address client
-    ) public view returns (Transaction[] memory) {
+    ) public view returns (Transaction[] memory, uint256[] memory) {
         uint256 clientTransactions = clientToTransaction[client].length;
         Transaction[] memory returnTransactions = new Transaction[](clientTransactions);
+        uint256[] memory returnTransactionsIds = new uint256[](clientTransactions);
         for (uint256 i = 0; i < clientTransactions; i++) {
-            returnTransactions[i] = transactions[clientToTransaction[client][i]];
+            returnTransactionsIds[i] = clientToTransaction[client][i];
+            returnTransactions[i] = transactions[returnTransactionsIds[i]];
         }
-        return returnTransactions;
+        return (returnTransactions, returnTransactionsIds);
     }
 
     function generateTransaction(
