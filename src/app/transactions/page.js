@@ -96,14 +96,25 @@ export default function Transaction() {
 
 
             <div>
-                <div> Pending transactions</div>
+                <div> Transactions</div>
                 {alltransactions.length > 0 ? (
                     alltransactions.map((transaction, index) => (
-                        <div className=" max-w-7xl bg-base-200 shadow-md mb-2 p-2 warp flex flex-col" key={index}><div>{JSON.stringify(transaction, (key, value) =>
+                        <div className=" max-w-7xl bg-base-200 shadow-md mb-2 p-2 warp flex flex-col" key={index}><div>
+
+                            Transaction fee: {parseInt(transaction.fee.toString()) / 1000000000000000000
+                            } ETH
+                            {transaction.pieces.map((obj) => {
+                                return (<div className="bg-base-300 m-2 p-2 rounded-md shadow-md "><div>To: {obj.destination}</div>
+                                    <div>Amount: {parseInt(obj.value.toString()) / 1000000000000000000
+                                    } ETH</div>
+                                </div>)
+                            })}
+                            {/* {JSON.stringify(transaction, (key, value) =>
                             typeof value === 'bigint'
                                 ? parseInt(value.toString()) / 1000000000000000000
                                 : value // return everything else unchanged
-                        )}</div> {!transaction.paid ? <button className="btn btn-primary whitespace-nowrap"
+                        )} */}
+                        </div> {!transaction.paid ? <button className="btn btn-primary whitespace-nowrap"
                             onClick={() => handlePayment(index)}
                         >Approve</button> : <button className="btn btn-success whitespace-nowrap"
 

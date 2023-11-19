@@ -65,8 +65,6 @@ const ListToJSONConverter = () => {
         })
     }
 
-
-
     useEffect(() => {
         // const payload = JSON.stringify({ transactions: list, fee: fee, client: client });
         // setJsonPayload(payload);
@@ -74,7 +72,7 @@ const ListToJSONConverter = () => {
 
     return (
         <div className="flex flex-col items-center prose space-y-2 bg-base-200 w-min p-4 rounded-lg shadow-md " >
-            <div>{addy}</div>
+            <div>Add your management fee and the client on behalf of whom you're making the batch transaction</div>
             <div className="flex flex-row space-x-4 ">
                 <input
                     className=' input'
@@ -92,6 +90,8 @@ const ListToJSONConverter = () => {
                     placeholder="Enter Client ID"
                 />
             </div>
+
+            <div>Add transactions which will be batch executed</div>
             <div className="flex flex-row space-x-4 ">
 
                 <input
@@ -118,11 +118,14 @@ const ListToJSONConverter = () => {
             <ul>
                 {list.map((item, index) => (
                     <li key={index}>
-                        Amount: {item.amount}, ID: {item.id}
+                        Amount: {parseInt(item.value.toString()) / (1e18)} ETH, ID: {item.destination}
                     </li>
                 ))}
             </ul>
+            <div className="flex flex-row" >
+                <div>Managerial fee: {fee} ETH, Client id: {client}</div>
 
+            </div>
             {jsonPayload && (
                 <div>
                     <h3>JSON Payload</h3>
