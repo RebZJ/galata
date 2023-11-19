@@ -2,7 +2,7 @@
 import { useContractWrite } from 'wagmi'
 import { useAccount, useNetwork } from 'wagmi'
 import { useContractRead, useContractEvent } from 'wagmi'
-
+import Link from 'next/link';
 import relay from '../../artifacts/contracts/Relay.sol/Relay.json';
 import { useState, useEffect } from 'react'
 export default function Home() {
@@ -76,7 +76,7 @@ export default function Home() {
       {addy ? null : <div className="m-2">Please login to use app!</div>}
 
       <div className="mt-10 bg-base-200 p-10 rounded-md shadow-sm">
-        {addy && !charityBool ? <button className="btn btn-primary mt-2 shadow-md"> Transactions </button> : null}
+        {addy && !charityBool ? <button className="btn btn-primary mt-2 shadow-md">  <Link href="/transactions"> Transactions</Link> </button> : null}
 
       </div>
 
