@@ -34,6 +34,8 @@ Relay contracts (all verified):
   * deployed and verified on goerli and stylus, so should be eligible for Arbitrum prize pool
 * [chiliz](https://spicy-explorer.chiliz.com/address/0xA845C2f516013A7687D4b8bE52393f6E3ef75F00): `0xA845C2f516013A7687D4b8bE52393f6E3ef75F00`
   * deployed and verified, so should be eligible for Chiliz prize pool
+* [filecoin](https://calibration.filutils.com/en/account/0xBBd9a9C472F86eCAD897E2117B6047E8E8fCbA5F): `0xBBd9a9C472F86eCAD897E2117B6047E8E8fCbA5F`
+  * contract is deployed and verified, works on FVM, so should be eligible for Filecoin prize pool
 * [gnosis](https://gnosis-chiado.blockscout.com/address/0xA845C2f516013A7687D4b8bE52393f6E3ef75F00): `0xA845C2f516013A7687D4b8bE52393f6E3ef75F00`
   * deployed and verified (testnet)
   * address is in the readme
