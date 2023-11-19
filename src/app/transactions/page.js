@@ -3,11 +3,13 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { useContractRead, useAccount, useContractWrite } from 'wagmi';
 import relay from '../../../artifacts/contracts/Relay.sol/Relay.json';
-import { parseEther } from 'viem';
+import { parseEther, parseGwei } from 'viem';
 import { useNetwork } from 'wagmi';
 
 export default function Transaction() {
     const [alltransactions, setAlltransactions] = useState([]);
+    const [alltransactionsID, setAlltransactionsID] = useState([]);
+
     const [addy, setAddy] = useState(null);
     const { address, isConnecting, isDisconnected } = useAccount();
     const [businessBool, setBusinessBool] = useState();
@@ -19,13 +21,13 @@ export default function Transaction() {
 
 
     const { data, isLoading, isSuccess, write } = useContractWrite({
-        address: '0x0644667f39cb9d87e884DF3C211a4363Cd4f5879',
+        address: '0xAE7315753f792799f54236694777823efc197E74',
         abi: relay.abi,
         functionName: 'executeTransaction',
     })
 
     const isBusiness = useContractRead({
-        address: '0x0644667f39cb9d87e884DF3C211a4363Cd4f5879',
+        address: '0xAE7315753f792799f54236694777823efc197E74',
         abi: relay.abi,
         functionName: 'isBusiness',
         args: [address],
@@ -35,7 +37,7 @@ export default function Transaction() {
     });
 
     const isManager = useContractRead({
-        address: '0x0644667f39cb9d87e884DF3C211a4363Cd4f5879',
+        address: '0xAE7315753f792799f54236694777823efc197E74',
         abi: relay.abi,
         functionName: 'isManager',
         args: [address],
@@ -45,20 +47,43 @@ export default function Transaction() {
     });
 
     const transactions = useContractRead({
-        address: '0x0644667f39cb9d87e884DF3C211a4363Cd4f5879',
+        address: '0xAE7315753f792799f54236694777823efc197E74',
         abi: relay.abi,
         functionName: 'pendingTransactions',
         args: [address],
         onSuccess(data) {
             console.log(data);
-            setAlltransactions(data);
+            setAlltransactions(data[0]);
+            setAlltransactionsID(data[1]);
         },
     });
 
     const handlePayment = (transactionId) => {
+        // const piecesSum = alltransactions[alltransactionsID[transactionId]].pieces.reduce((acc, piece) => acc + parseInt(piece.value.toString()), 0);
+
+        const piecesArray = alltransactions[transactionId].pieces
+        let piecesSum = 0;
+        for (let i = 0; i < piecesArray.length; i++) {
+            piecesSum += parseInt(piecesArray[i].value.toString());
+        }
+
+        const feeSum = parseInt(alltransactions[transactionId].fee.toString());
+
+        console.log("Sum of values in 'pieces' array:", piecesSum);
+        console.log("Sum of 'fee':", feeSum);
+
+        // // Total sum
+        const totalSum = (piecesSum + feeSum);
+        console.log("Total sum:", totalSum);
         // handlePayment(transactionId);
         // You may want to update the state or perform other actions after payment handling
-        console.log(transactionId)
+        // alltransactionsID[transactionId]
+        write({
+            args: [alltransactionsID[transactionId]],
+            from: addy,
+            value: totalSum
+        })
+        // console.log(alltransactionsID[transactionId])
     };
 
     return (
@@ -74,12 +99,12 @@ export default function Transaction() {
                 <div> Pending transactions</div>
                 {alltransactions.length > 0 ? (
                     alltransactions.map((transaction, index) => (
-                        <div className=" max-w-7xl bg-base-200 shadow-md mb-2 p-2 warp flex flex-col" key={index}><div>{JSON.stringify(transaction.pieces, (key, value) =>
+                        <div className=" max-w-7xl bg-base-200 shadow-md mb-2 p-2 warp flex flex-col" key={index}><div>{JSON.stringify(transaction, (key, value) =>
                             typeof value === 'bigint'
                                 ? parseInt(value.toString()) / 1000000000000000000
                                 : value // return everything else unchanged
                         )}</div> {!transaction.paid ? <button className="btn btn-primary whitespace-nowrap"
-                            onClick={() => handlePayment(1)}
+                            onClick={() => handlePayment(index)}
                         >Approve</button> : <button className="btn btn-success whitespace-nowrap"
 
                         >Paid</button>}</div>

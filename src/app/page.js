@@ -22,7 +22,7 @@ export default function Home() {
 
 
   const isManager = useContractRead({
-    address: '0x0644667f39cb9d87e884DF3C211a4363Cd4f5879',
+    address: '0xAE7315753f792799f54236694777823efc197E74',
     abi: relay.abi,
     functionName: 'isManager',
     args: [address],
@@ -33,7 +33,7 @@ export default function Home() {
   })
 
   const isBusiness = useContractRead({
-    address: '0x0644667f39cb9d87e884DF3C211a4363Cd4f5879',
+    address: '0xAE7315753f792799f54236694777823efc197E74',
     abi: relay.abi,
     functionName: 'isBusiness',
     args: [address],
@@ -43,7 +43,7 @@ export default function Home() {
   })
 
   const isCharity = useContractRead({
-    address: '0x0644667f39cb9d87e884DF3C211a4363Cd4f5879',
+    address: '0xAE7315753f792799f54236694777823efc197E74',
     abi: relay.abi,
     functionName: 'isCharity',
     args: [address],
