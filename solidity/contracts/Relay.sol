@@ -199,13 +199,15 @@ contract Relay is Types {
 
     function pendingTransactions(
         address client
-    ) public view returns (Transaction[] memory) {
+    ) public view returns (Transaction[] memory, uint256[] memory) {
         uint256 clientTransactions = clientToTransaction[client].length;
         Transaction[] memory returnTransactions = new Transaction[](clientTransactions);
+        uint256[] memory returnTransactionsIds = new uint256[](clientTransactions);
         for (uint256 i = 0; i < clientTransactions; i++) {
-            returnTransactions[i] = transactions[clientToTransaction[client][i]];
+            returnTransactionsIds[i] = clientToTransaction[client][i];
+            returnTransactions[i] = transactions[returnTransactionsIds[i]];
         }
-        return returnTransactions;
+        return (returnTransactions, returnTransactionsIds);
     }
 
     function generateTransaction(
