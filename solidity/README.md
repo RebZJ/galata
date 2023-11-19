@@ -16,3 +16,9 @@ This project demonstrates how to use hardhat or foundry to deploy a contract in 
 4. Run `yarn compile` to compile the contract.
 5. Run `yarn deploy:scrollTestnet` to deploy the contract on the Scroll Sepolia Testnet.
 6. Run `yarn test` for hardhat tests.
+
+## Test accounts
+
+You can use for test on all chains:
+* for business `9173abe811eecdae44a61ccac3beef5fa437b29f7e14421d6e0ecbb1f8eef037`
+* for manager `ce6cf554bb91435011c1add3f3f67b45877bdc95c26a446383a8af3c44fe5a36`
