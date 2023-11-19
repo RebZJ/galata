@@ -2,7 +2,7 @@
 import { createWeb3Modal, defaultWagmiConfig } from '@web3modal/wagmi/react'
 
 import { WagmiConfig } from 'wagmi'
-import { arbitrum, mainnet, scrollSepolia, gnosis } from 'viem/chains'
+import { arbitrumGoerli, arbitrumSepolia, scrollSepolia, gnosisChiado, spicy, filecoinCalibration } from 'viem/chains'
 
 const projectId = 'af9bf413505dd80e1c7bca20415b51b9'
 
@@ -13,7 +13,7 @@ const metadata = {
     icons: ['https://avatars.githubusercontent.com/u/37784886']
 }
 
-const chains = [mainnet, arbitrum, gnosis, scrollSepolia]
+const chains = [arbitrumGoerli, arbitrumSepolia, gnosisChiado, scrollSepolia, spicy, filecoinCalibration]
 const wagmiConfig = defaultWagmiConfig({ chains, projectId, metadata })
 
 // 3. Create modal

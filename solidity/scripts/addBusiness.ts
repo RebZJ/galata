@@ -26,6 +26,13 @@ async function main() {
         const txReceipt = await tx.wait(2);
         console.log("tx: ", txReceipt.transactionHash);
     }
+    {
+        const signerBalanceBefore = await ethers.provider.getBalance(signerAddress);
+        const contract = await ethers.getContractAt("Relay", CONTRACT_ADDRESS, signer);
+        const tx = await contract.approveBusiness("0xAd685a172cE9F3ceeA93d228e4DC090f810Dc319");
+        const txReceipt = await tx.wait(2);
+        console.log("tx: ", txReceipt.transactionHash);
+    }
 
 
 }

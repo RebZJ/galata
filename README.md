@@ -26,15 +26,17 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 
 ## Current contract deployments
 Relay contracts (all verified):
-* [scrolls](https://sepolia.scrollscan.dev/address/0x0644667f39cb9d87e884DF3C211a4363Cd4f5879): `0x0644667f39cb9d87e884DF3C211a4363Cd4f5879`
+* [scrolls](https://sepolia.scrollscan.dev/address/0xAE7315753f792799f54236694777823efc197E74): `0xAE7315753f792799f54236694777823efc197E74`
   * deployed and verified, so should be eligible for Scrolls prize pool
 * Arbitrum:
-  * [arbitrum-goerli](https://testnet.arbiscan.io/address/0x03839dC2Cd16dA7E41560762Dea9CB9Ad59DbF18): `0x03839dC2Cd16dA7E41560762Dea9CB9Ad59DbF18`
-  * [arbitrum-stylus](https://stylus-testnet-explorer.arbitrum.io/address/0x93a51058c0Cf6BA3e97a4A3E476ae8C95D02ea04): `0x93a51058c0Cf6BA3e97a4A3E476ae8C95D02ea04`
+  * [arbitrum-goerli](https://testnet.arbiscan.io/address/0xA4852b98666c8eE2CAb535bD9638C0c83ecdcFC2): `0xA4852b98666c8eE2CAb535bD9638C0c83ecdcFC2`
+  * [arbitrum-stylus](https://stylus-testnet-explorer.arbitrum.io/address/0x525D2de2b1679aFc68bB5e724db04bDCdAf7D94d): `0x525D2de2b1679aFc68bB5e724db04bDCdAf7D94d`
   * deployed and verified on goerli and stylus, so should be eligible for Arbitrum prize pool
-* [chiliz](https://spicy-explorer.chiliz.com/address/0x93a51058c0Cf6BA3e97a4A3E476ae8C95D02ea04): `0x93a51058c0Cf6BA3e97a4A3E476ae8C95D02ea04`
+* [chiliz](https://spicy-explorer.chiliz.com/address/0xA845C2f516013A7687D4b8bE52393f6E3ef75F00): `0xA845C2f516013A7687D4b8bE52393f6E3ef75F00`
   * deployed and verified, so should be eligible for Chiliz prize pool
-* [gnosis](https://gnosis-chiado.blockscout.com/address/0x93a51058c0Cf6BA3e97a4A3E476ae8C95D02ea04): `0x93a51058c0Cf6BA3e97a4A3E476ae8C95D02ea04`
+* [filecoin](https://calibration.filutils.com/en/account/0xBBd9a9C472F86eCAD897E2117B6047E8E8fCbA5F): `0xBBd9a9C472F86eCAD897E2117B6047E8E8fCbA5F`
+  * contract is deployed and verified, works on FVM, so should be eligible for Filecoin prize pool
+* [gnosis](https://gnosis-chiado.blockscout.com/address/0xA845C2f516013A7687D4b8bE52393f6E3ef75F00): `0xA845C2f516013A7687D4b8bE52393f6E3ef75F00`
   * deployed and verified (testnet)
   * address is in the readme
   * more than 2 successful txs

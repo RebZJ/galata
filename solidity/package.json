@@ -42,11 +42,18 @@
     "tx:approve-business:arbitrumSepolia": "npx hardhat run --network arbitrumSepolia scripts/addBusiness.ts",
     "tx:approve-charity:arbitrumSepolia": "npx hardhat run --network arbitrumSepolia scripts/addCharity.ts",
 
+    "tx:add-manager:filecoin": "npx hardhat run --network filecoin scripts/addManager.ts",
+    "tx:generate:filecoin": "npx hardhat run --network filecoin scripts/generateTransaction.ts",
+    "tx:execute:filecoin": "npx hardhat run --network filecoin scripts/executeTransaction.ts",
+    "tx:approve-business:filecoin": "npx hardhat run --network filecoin scripts/addBusiness.ts",
+    "tx:approve-charity:filecoin": "npx hardhat run --network filecoin scripts/addCharity.ts",
+
     "deploy:scrollTestnet": "npx hardhat run --network scrollTestnet scripts/deploy.ts",
     "deploy:arbitrumGoerli": "npx hardhat run --network arbitrumGoerli scripts/deploy.ts",
     "deploy:chilizTestnet": "npx hardhat run --network chilizTestnet scripts/deploy.ts",
     "deploy:gnosisTestnet": "npx hardhat run --network gnosisTestnet scripts/deploy.ts",
-    "deploy:arbitrumSepolia": "npx hardhat run --network arbitrumSepolia scripts/deploy.ts"
+    "deploy:arbitrumSepolia": "npx hardhat run --network arbitrumSepolia scripts/deploy.ts",
+    "deploy:filecoin": "npx hardhat run --network filecoin scripts/deploy.ts"
   },
   "devDependencies": {
     "@ethersproject/abi": "^5.4.7",
