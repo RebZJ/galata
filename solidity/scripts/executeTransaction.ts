@@ -21,7 +21,7 @@ async function main() {
     // Executing the transaction on-chain and verifying actual values
     const signerBalanceBefore = await ethers.provider.getBalance(signerAddress);
     const contract = await ethers.getContractAt("Relay", CONTRACT_ADDRESS, signer);
-    const tx = await contract.executeTransaction(BigInt(0), { value: BigInt(31), maxPriorityFeePerGas: 7});
+    const tx = await contract.executeTransaction(BigInt(0), { value: BigInt(31)});
     const txReceipt = await tx.wait(5);
     console.log("tx: ", txReceipt.transactionHash);
 }
